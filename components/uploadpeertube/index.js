@@ -1,5 +1,8 @@
-const ffmpeg = require('fluent-ffmpeg');
-const stream = require('stream');
+let ipcRenderer;
+
+if (typeof _Electron !== 'undefined') {
+  ipcRenderer = require('electron').ipcRenderer;
+}
 
 var uploadpeertube = (function () {
   var self = new nModule();
@@ -139,79 +142,6 @@ var uploadpeertube = (function () {
 
         data.name = videoName || fileName;
 
-        /**
-         * Enumeration for Resolutions of videos
-         * @type {Object.<string, [number, number]>}
-         */
-        const Resolution = {
-          p240: [352, 240],
-          p360: [640, 360],
-          p480: [854, 480],
-          p720: [1280, 720],
-        };
-
-        /**
-         * Video transcoder function
-         *
-         * @param {string} filePath
-         * @param {typeof Resolution} resolution
-         *
-         * @returns {Promise<Buffer>} result
-         */
-        function transcodeVideo(filePath, resolution) {
-          function executor(resolve, reject) {
-            let triesCount = 0;
-
-            function startTranscoding() {
-              const readStream = fs.createReadStream(filePath);
-
-              let bufferStream = new stream.PassThrough();
-
-              let outputParts = [];
-
-              bufferStream.on('data', (data) => {
-                outputParts.push(data);
-              });
-
-              bufferStream.on('end', () => {
-                resolve(Buffer.concat(outputParts));
-              });
-
-              try {
-                ffmpeg({ source: readStream })
-                    .videoFilter({ filter: 'scale', options: resolution })
-                    .format('flv')
-                    .writeToStream(bufferStream);
-              } catch (err) {
-                console.error('Error occured:', err);
-
-                if (triesCount < 3) {
-                  startTranscoding();
-                  triesCount++;
-                } else {
-                  reject(err);
-                }
-              }
-            }
-
-            startTranscoding();
-          }
-
-          return new Promise(executor);
-        }
-
-        const filePath = event.target.files[0].path;
-
-        /** Writing transcoded alternatives to target object */
-        data.video = {
-          p240: transcodeVideo(filePath, Resolution.p240),
-          p360: transcodeVideo(filePath, Resolution.p360),
-          p480: transcodeVideo(filePath, Resolution.p480),
-          p720: transcodeVideo(filePath, Resolution.p720),
-        };
-
-        await Promise.all(Object.values(data.video));
-
         var options = {
           type: 'uploadVideo',
         };
@@ -256,6 +186,34 @@ var uploadpeertube = (function () {
         };
 
         el.importUrl.addClass('hidden');
+
+        if (typeof _Electron !== 'undefined') {
+          const filePath = event.target.files[0].path;
+
+          function processTranscoding() {
+            return new Promise((resolve, reject) => {
+              options.progress(60);
+              ipcRenderer.send('transcode-video-request', filePath);
+              ipcRenderer.on('transcode-video-response', (event, transcoded, error) => {
+                if (error) {
+                  reject('Error on transcoding');
+                  return;
+                }
+
+                resolve(transcoded);
+              });
+            });
+          }
+
+          await processTranscoding()
+            .then((transcoded) => {
+              /** Writing transcoded alternatives to target object */
+              data.video = transcoded;
+            })
+            .catch(() => {
+              sitemessage('There was an error with processing your video');
+            });
+        }
 
         self.app.peertubeHandler.api.videos
           .upload(data, options)
