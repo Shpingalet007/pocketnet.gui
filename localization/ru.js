@@ -908,6 +908,7 @@ ____loclib.editWallpaper = "Изменить Заставку";
 ____loclib.removeVideo = "Удалить Видео";
 
 
+____loclib.videoTranscodingError = "Произошла ошибка при обработке вашего видео"
 ____loclib.videoUploadingFinish = "Завершение загрузки..."
 ____loclib.uploadNewVideo = "Добавить новое видео"
 ____loclib.selectVideoFile = "Выберите файл"
