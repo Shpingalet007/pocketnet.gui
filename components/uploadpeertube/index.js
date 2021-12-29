@@ -222,7 +222,7 @@ var uploadpeertube = (function () {
           await processTranscoding()
             .then((transcoded) => {
               /** Writing transcoded alternatives to target object */
-              /** At this for backend reasons, sending only 720p */
+              /** At this moment for backend reasons, sending only 720p */
 
               if (!transcoded) {
                 return;
