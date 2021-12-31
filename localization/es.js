@@ -802,9 +802,49 @@ ____loclib.videosDeleted = "Vídeos eliminados!";
 ____loclib.noDownloadedVideos = "No hay vídeos descargados";
 
 // Uploadpeertube component
+____loclib.editWallpaper = "Cambiar la imagen previa";
+____loclib.removeVideo = "Eliminar el video";
+____loclib.peertubeAddVideo = "Subir Vídeo"
+____loclib.visibletoeveryone = "Visible para todos"
+____loclib.visibleonlytosubscribers = "Visible sólo para los suscriptores"
+____loclib.visibleonlytoregistered = "Visible sólo para los usuarios de Bastyon"
+____loclib.addtagsCategories = "Añadir categorías/etiquetas"
+____loclib.videotitle = "Introduzca el título del vídeo/stream";
+____loclib.videodesc = "Introduzca la descripción del video/stream";
+____loclib.entervideocaption = "Por favor, introduzca el título del vídeo";
+____loclib.e14002 = "¿Estás seguro de que quieres borrar el publicación?"
+
+____loclib.importFromExternal = "o importar de YouTube"
+____loclib.videoSizeAtt = "Tamaño máximo de archivo permitido: 4 Gb."
+____loclib.videoFormats = "Lista de formatos de vídeo compatibles: .mp4, .mkv, .mov, .avi, .wmv, .flv, .f4v, .3g2, .3gp, .mts, .m2ts, .mxf, .nut"
+____loclib.videoQualityCaption = "Limitaciones de la calidad del vídeo"
+____loclib.videoQualityInfo = "Tasa de bits de vídeo máxima permitida: 8 Mbit/s. Si tu archivo supera este límite, la descarga se interrumpirá. Resolución máxima permitida - 720p. <br/> Tasas de bits recomendadas: <br/> <b>1080p:</b> 5081 Kbps <br/> <b>720p:</b>  2680 Kbps <br/> <b>480p:</b>  1300 Kbps <br/> <b>360p:</b>  700 Kbps"
+
+____loclib.pbp_1 = "Programa de bonificación "+appname;
+____loclib.pbp_2 = "Criterios de bonificación por contenido original:"
+____loclib.pbp_3 = "Cada 15k visitas + 1250 valoraciones de cinco estrellas de usuarios únicos"
+____loclib.pbp_4 = "Equivalente a PKOIN:"
+____loclib.pbp_5 = "1,000 USDT"
+____loclib.pbp_6 = "¿Cómo puede aumentar sus vistas?"
+____loclib.pbp_7 = "Insertar su "+appname+" vídeo en sitios web externos (haga clic en Compartir y elija Insertar)"
+____loclib.pbp_8 = "Comparte tu vídeo en las redes sociales y por correo electrónico"
+____loclib.pbp_9 = "Comparte el enlace a tu página personal (ve a tu perfil y haz clic en Compartir)"
+____loclib.pbp_10 = "Si invitas a un videoblogger y puedes demostrarlo, obtienes una bonificación equivalente al 25% de sus ganancias."
+____loclib.pbp_11 = "Para cualquier pregunta, envíe un correo electrónico a"
+
+____loclib.pbp_6_1 = "Usuarios referidos"
+____loclib.pbp_6_2 = "1000"
+____loclib.pbp_6_3 = "Importante: A partir del 1 de noviembre hay un requisito adicional para cada bono. Debes tener 1000 Usuarios Referidos para cada bono. Para conseguir usuarios de referencia debes incluir el enlace de referencia cuando lo compartas."
+
 ____loclib.videoTranscodingError = "Se ha producido un error al procesar su vídeo"
 ____loclib.videoUploadingFinish = "Terminando de subir el archivo..."
 ____loclib.uploadNewVideo = "Subir un nuevo Pocketvídeo"
 ____loclib.selectVideoFile = "Seleccione el archivo de vídeo"
 ____loclib.uploadVideoProgress_processing = "Procesados:"
 ____loclib.uploadVideoProgress_uploading = "Cargados:"
+
+____loclib.importHeading = "Importar vídeo de YouTube"
+____loclib.importInputPlaceholder = "Pegue el enlace a su vídeo de YouTube"
+____loclib.importInputLabel = "Url de vídeo"
+
+____loclib.zeron = "No se ha encontrado nada";
