@@ -299,6 +299,14 @@
 									<% } %>
 								</div>
 
+								<% if(typeof _Electron != 'undefined' && !window.cordova) { %>
+									<div class="items history">
+										<button class="back">
+											<i class="fa fa-arrow-left"></i>
+										</button>
+									</div>
+						        <% } %>
+
 							<% } %>
 
 						<% } %>

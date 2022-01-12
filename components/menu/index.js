@@ -1049,6 +1049,10 @@ var menu = (function(){
 					full()
 				})
 
+				el.c.find('.items.history button.back').on('click', function() {
+					window.history.back();
+				});
+
 				full()
 			}
 
