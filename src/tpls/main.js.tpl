@@ -83,25 +83,25 @@ autoUpdater.on('update-downloaded', (ev) => {
 
 var appName = global.TESTPOCKETNET ? 'BastyonTest' : 'Bastyon';
 
-var defaultIcon = require('path').join(__dirname, 'res/electron/icons/win/icon.ico')
-var defaultTrayIcon = require('path').join(__dirname, 'res/electron/icons/win/icon.ico')
-var badgeTrayIcon = require('path').join(__dirname, 'res/electron/icons/win/iconbadge.ico')
+var defaultIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/icon.ico')
+var defaultTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/icon.ico')
+var badgeTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/iconbadge.ico')
 if (global.TESTPOCKETNET) {
-    defaultIcon = require('path').join(__dirname, 'res/electron/icons/win/test_icon.ico')
-    defaultTrayIcon = require('path').join(__dirname, 'res/electron/icons/win/test_icon.ico')
-    badgeTrayIcon = require('path').join(__dirname, 'res/electron/icons/win/test_iconbadge.ico')
+    defaultIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/test_icon.ico')
+    defaultTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/test_icon.ico')
+    badgeTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/win/test_iconbadge.ico')
 }
 
 if (is.linux()) {
-    defaultIcon = require('path').join(__dirname, 'res/electron/icons/png/64x64.png')
-    defaultTrayIcon = require('path').join(__dirname, 'res/electron/icons/png/32x32.png')
-    badgeTrayIcon = require('path').join(__dirname, 'res/electron/icons/png/iconbadge.png')
+    defaultIcon = require('path').join(__dirname, 'assets/res/electron/icons/png/64x64.png')
+    defaultTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/png/32x32.png')
+    badgeTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/png/iconbadge.png')
 }
 
 if (is.macOS()) {
-    defaultIcon = require('path').join(__dirname, 'res/electron/icons/mac/trayTemplate.png')
-    defaultTrayIcon = require('path').join(__dirname, 'res/electron/icons/mac/trayTemplate.png')
-    badgeTrayIcon = require('path').join(__dirname, 'res/electron/icons/mac/traybadgeTemplate.png')
+    defaultIcon = require('path').join(__dirname, 'assets/res/electron/icons/mac/trayTemplate.png')
+    defaultTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/mac/trayTemplate.png')
+    badgeTrayIcon = require('path').join(__dirname, 'assets/res/electron/icons/mac/traybadgeTemplate.png')
 }
 
 var protocols = ['pocketnet', 'bastyon']
