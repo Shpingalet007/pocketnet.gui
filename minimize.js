@@ -41,7 +41,7 @@ _.each(argcli, function(a){
 	catch(e){
 		args[prs[0]] = prs[1]
 	}
-	
+
 })
 
 var addzeros = function(v){
@@ -79,7 +79,7 @@ var tpls = ['embedVideo.php', 'index_el.html', 'index.html', 'index.php', 'index
 var tplspath = {
 
 }
-	
+
 var _meta = {
 	Pocketnet : {
 		url : "pocketnet.app",
@@ -122,10 +122,10 @@ var babelifycode = function(code){
 			plugins: ["remove-use-strict"]
 	});
 	return c.code
-	
+
 }
 
-fs.exists(mapJsPath, function (exists) { 
+fs.exists(mapJsPath, function (exists) {
 	if(exists) {
 
 		var m = require(mapJsPath);
@@ -178,7 +178,7 @@ fs.exists(mapJsPath, function (exists) {
 
 		var _modules = _.filter(m, function(_m, mn){
 			if(mn != "__sources" && mn != "__css" && mn != '__vendor' && mn != '__templates'  && mn != '__sourcesfirst' && mn != '__sourceslast' && mn != '__exportcss') return true;
-			
+
 		})
 
 
@@ -186,7 +186,7 @@ fs.exists(mapJsPath, function (exists) {
 			path : './web',
 			copy : ['chat', 'components', 'css', 'images', 'img', 'js', 'localization', 'peertube', 'res', 'sounds', 'browserconfig.xml', 'crossdomain.xml', 'favicon.svg', 'indexwebnode.html', 'LICENSE', 'README.md']
 		}
-	
+
 
 		/*JOIN MODULES*/
 
@@ -195,19 +195,19 @@ fs.exists(mapJsPath, function (exists) {
 				syncCallbacks : true,
 				array : _modules,
 				action : function(p){
-	
+
 					var module = p.item;
-	
+
 					var path = module.path || './';
-	
+
 					path = path.replace("..", '.')
-				
+
 					var modulepath = path + 'components/' + module.uri + '/index.js';
-	
+
 					fs.exists(modulepath, function (exists) {
 						if(exists){
-	
-	
+
+
 							fs.readFile(modulepath, function read(err, data) {
 								if (err) {
 									throw err;
@@ -216,15 +216,15 @@ fs.exists(mapJsPath, function (exists) {
 								var code = babelifycode(data.toString())
 
 								//if(s.babelify) code = babelifycode(code)
-	
+
 								var minified = uglifyJS.minify(code, {
 									compress: {
 										passes: 2
 									}
 								})
-	
-								
-	
+
+
+
 								if(!minified.error && uglify){
 									code = minified.code
 								}
@@ -233,11 +233,13 @@ fs.exists(mapJsPath, function (exists) {
 									if(uglify)
 										console.log('UglifyJS Fail: ' + minified.error, modulepath)
 								}
-								
-	
+
+
 								modules.data = modules.data + "\n /*_____*/ \n" + data;
+
+								p.success();
 							});
-	
+
 						}
 						else
 						{
@@ -245,56 +247,61 @@ fs.exists(mapJsPath, function (exists) {
 							throw Error(`File doesn't exist: ${module.uri}`)
 						}
 					})
-	
+
 				},
-				
+
 				all : {
 					success : function(){
-	
+
 						console.log(modules.path)
-				
+
 						fs.writeFile(modules.path, modules.data, function(err) {
-	
+
 							if(err) {
-	
+
 								throw "Access not permitted " + modules.path
 							}
-	
+
 							//console.log("Access permitted", item)
-	
+
 							var arf = _.clone(m.__sourcesfirst || []);
-	
+
 							var arl = _.clone(m.__sourceslast || []);
-	
+
 							var ar = _.clone(m.__sources || []);
 								ar.push(modules.path.replace('./', ''));
-	
+
 							var ver = _.clone(m.__vendor || []);
-	
+
 							joinVendor(ver, function(){
-	
+
 								console.log("joinVendor DONE")
-	
+
 								joinScripts(arf, joinfirst, function(){
-	
+
 									console.log("joinScriptsFirst DONE")
-	
-									
-	
+
+
+
 									joinTemplates(function(d){
-	
+
 										join.data = join.data + "\n /*_____*/ \n" + d;
-	
+
 										joinScripts(ar, join, function(){
-	
+
 											console.log("joinScripts DONE")
-	
+
 											joinScripts(arl, joinlast, function(){
-	
+
 												console.log("joinScriptsLast DONE")
-	
+
+												createTemplates().catch(e => {
+
+												}).then( r => {
+													if(_clbk) _clbk()
+												})
 											})
-										
+
 										});
 
 									})
@@ -327,15 +334,15 @@ fs.exists(mapJsPath, function (exists) {
 							s = p.item
 						}
 
-						
+
 
 						var path;
 
 						if(filepath.indexOf("..") == -1) path = './'+ filepath;
-						else path = filepath.replace("..", '.');				  				
+						else path = filepath.replace("..", '.');
 
 						fs.exists(path, function (exists) {
-							
+
 							if(exists){
 
 								console.log(path)
@@ -363,7 +370,7 @@ fs.exists(mapJsPath, function (exists) {
 										if (uglify)
 											console.log('UglifyJS Fail: ' + minified.error, path)
 									}
-									
+
 
 									join.data = join.data + "\n\n\n /*"+path+"*/ " + "\n /*_____*/ \n" + code;
 
@@ -378,7 +385,7 @@ fs.exists(mapJsPath, function (exists) {
 						})
 
 					},
-					
+
 					all : {
 						success : function(){
 							console.log(join.path)
@@ -393,12 +400,12 @@ fs.exists(mapJsPath, function (exists) {
 
 									throw "Access not permitted (JS) " +  join.path
 								}
-										
-								clbk();				
+
+								clbk();
 							});
 
-						
-							
+
+
 						}
 					}
 				})
@@ -427,8 +434,8 @@ fs.exists(mapJsPath, function (exists) {
 						var path;
 
 						if(filepath.indexOf("..") == -1) path = './'+ filepath;
-						else path = filepath.replace("..", '.');		
-						
+						else path = filepath.replace("..", '.');
+
 						fs.exists(path, function (exists) {
 							//
 							if(exists){
@@ -458,13 +465,13 @@ fs.exists(mapJsPath, function (exists) {
 						})
 
 					},
-					
+
 					all : {
 						success : function(){
 
 							tempates.data = 'window.pocketnetTemplates = ' + JSON.stringify(scripted)
 
-							clbk(tempates.data);	
+							clbk(tempates.data);
 						}
 					}
 				})
@@ -488,7 +495,7 @@ fs.exists(mapJsPath, function (exists) {
 					lazyEach({
 						array : items,
 						action : function(p){
-	
+
 							fs.readdir(path + p.item + '/templates/', function(err, items2) {
 
 
@@ -502,14 +509,14 @@ fs.exists(mapJsPath, function (exists) {
 								p.success()
 
 							})
-	
+
 						},
-						
+
 						all : {
 							success : function(){
 
 								__joinTemplates(__templates, clbk)
-								
+
 							}
 						}
 					})
@@ -521,7 +528,7 @@ fs.exists(mapJsPath, function (exists) {
 				__joinTemplates(m.__templates, clbk)
 			}
 
-			
+
 		}
 
 
@@ -544,7 +551,7 @@ fs.exists(mapJsPath, function (exists) {
 						var path;
 
 						if(filepath.indexOf("..") == -1) path = './'+ filepath;
-						else path = filepath.replace("..", '.');				  				
+						else path = filepath.replace("..", '.');
 
 						fs.exists(path, function (exists) {
 							//
@@ -595,7 +602,7 @@ fs.exists(mapJsPath, function (exists) {
 						})
 
 					},
-					
+
 					all : {
 						success : function(){
 
@@ -610,8 +617,8 @@ fs.exists(mapJsPath, function (exists) {
 									throw "Access not permitted (JS) " +  vendor.path
 
 								}
-										
-								clbk();				
+
+								clbk();
 							});
 						}
 					}
@@ -633,7 +640,7 @@ fs.exists(mapJsPath, function (exists) {
 				fs.exists(pth, function (exists) {
 
 					if(exists){
-	
+
 						fs.readFile(pth, {encoding: 'utf-8'}, function read(err, index) {
 							if (err) {
 								return reject(err)
@@ -644,7 +651,7 @@ fs.exists(mapJsPath, function (exists) {
 							var CSS = "";
 							var VE = "";
 							var CACHED_FILES = "";
-	
+
 							if(args.test){
 								JSENV += '<script>window.testpocketnet = true;</script>';
 							}
@@ -665,7 +672,7 @@ fs.exists(mapJsPath, function (exists) {
 							JSENV += '<script>window.versionsuffix = "' + package.versionsuffix + '";</script>';
 
 							vs = numfromreleasestring(package.version) + '_' + (package.versionsuffix || "0")
-	
+
 							if(args.prodaction)
 							{
 
@@ -675,12 +682,12 @@ fs.exists(mapJsPath, function (exists) {
 								JSPOST += '<script async join src="js/joinlast.min.js?v='+vs+'"></script>';
 								VE = '<script async join src="js/vendor.min.js?v='+args.vendor+'"></script>';
 								CSS = '<link rel="stylesheet" href="css/master.css?v='+vs+'">';
-	
+
 								index = index.replace(new RegExp(/\?v=([0-9]*)/g), '?v=' + vs);
 							}
 							else
 							{
-	
+
 
 								JSENV += '<script>window.design = true;</script>';
 
@@ -695,7 +702,7 @@ fs.exists(mapJsPath, function (exists) {
 									JS += '<script  join src="'+filepath+'?v='+rand(1, 999999999999)+'"></script>\n';
 									CACHED_FILES += `'${filepath}',\n`;
 								})
-								
+
 								_.each(m.__sources, function(source){
 
 									var filepath = source;
@@ -719,12 +726,12 @@ fs.exists(mapJsPath, function (exists) {
 									JSPOST += '<script  join src="'+filepath+'?v='+rand(1, 999999999999)+'"></script>\n';
 									CACHED_FILES += `'${filepath}',\n`;
 								})
-	
+
 								_.each(m.__css, function(source){
 									CSS += '<link rel="stylesheet" href="'+source+'?v='+rand(1, 999999999999)+'">\n';
 									CACHED_FILES += `'${source}',\n`;
-								})	
-	
+								})
+
 								_.each(m.__vendor, function(source){
 
 									var filepath = source;
@@ -735,7 +742,7 @@ fs.exists(mapJsPath, function (exists) {
 
 									VE += '<script  join src="'+filepath+'?v='+args.vendor+'"></script>\n';
 									CACHED_FILES += `'${filepath}',\n`;
-								})			            		
+								})
 							}
 							index = index.replace("__JSENV__" , JSENV);
 							index = index.replace("__VE__" , VE);
@@ -750,7 +757,7 @@ fs.exists(mapJsPath, function (exists) {
 							_.each(VARS, function(v, i){
 								index = index.replaceAll("__VAR__." + i, v);
 							})
-	
+
 							fs.writeFile('./' + tplname, index, function(err) {
 
 								if (err) {
@@ -758,11 +765,11 @@ fs.exists(mapJsPath, function (exists) {
 								}
 
 								resolve()
-								
+
 							})
-	
+
 						});
-	
+
 					}
 					else
 					{
@@ -770,9 +777,9 @@ fs.exists(mapJsPath, function (exists) {
 					}
 				})
 
-			})	
+			})
 
-			
+
 		}
 
 		var createTemplates = function(){
@@ -791,7 +798,7 @@ fs.exists(mapJsPath, function (exists) {
 
 			copycontent(cordovaconfig, function(){
 			}, true)
-            
+
             if(args.makewebnode)
             {
                 copycontent(webnode, () => {})
@@ -803,7 +810,7 @@ fs.exists(mapJsPath, function (exists) {
 	}
 	else
 	{
-		
+
 	}
 });
 
@@ -841,7 +848,7 @@ var helpers = {
 		}
 		catch(e){}
 
-		
+
 
 		if(clbk) clbk()
 
@@ -863,7 +870,7 @@ var copycontent = function(options, clbk, nac) {
 					if (err) {
 					  console.error(err);
 					}
-	
+
 					p.success();
 				});
 			},
@@ -875,7 +882,7 @@ var copycontent = function(options, clbk, nac) {
 			}
 		})
 	}
-		
+
 	if(!nac)
 		helpers.clearfolder(options.path, function() {
 			ac()
@@ -887,7 +894,7 @@ var copycontent = function(options, clbk, nac) {
 
 var copycordovaios = function(options, clbk){
 
-	fs.exists(options.path, function (exists) { 
+	fs.exists(options.path, function (exists) {
 		if(exists) {
 			console.log('cordova ios exists')
 
@@ -895,26 +902,26 @@ var copycordovaios = function(options, clbk){
 				sync : true,
 				array : options.copy,
 				action : function(p){
-		
+
 					ncp(p.item, options.path + '/' + p.item, function (err) {
-		
+
 						if (err) {
 						  console.error(err);
 						}
-		
+
 						p.success();
-						
+
 					});
-		
+
 				},
-				
+
 				all : {
 					success : function(){
-		
+
 						console.log('cordova ready')
-		
+
 						if(clbk) clbk()
-		
+
 					}
 				}
 			})
@@ -926,7 +933,7 @@ var copycordovaios = function(options, clbk){
 		}
 
 	})
-	
+
 }
 
 if(!String.prototype.replaceAll)
