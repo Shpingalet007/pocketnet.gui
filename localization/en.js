@@ -2336,3 +2336,13 @@ _l.removecategoryQestion = 'Do you really want to remove this category?'
 
 _l.searchbytext = "Search by text:"
 _l.searchbytags = "Search by tags:"
+
+_l.saved = "Saved";
+_l.savePost = "Save post";
+_l.postsaved = "Post saved";
+_l.deleteSavedPost = "Delete saved post";
+_l.downloadMedia = "Download media";
+_l.doYouDownloadMedia = "Do you want to download the media (image/video) on your device ?";
+_l.gotosaved2 = "Go to saved";
+_l.yes = "Yes";
+_l.no = "No";
