@@ -7494,8 +7494,9 @@ Platform = function (app, listofnodes) {
 
                             // Download video thumbnail
                             downloadThumbnail().then((thumbnailPath) => {
-                                // infos.thumbnail = thumbnailPath;
-                                // result.infos.thumbnail = thumbnailPath;
+                                infos.thumbnail = thumbnailPath;
+                                result.infos.thumbnail = thumbnailPath;
+                                infos.videoDetails.previewPath = thumbnailPath;
                             }).finally(() => {
 
                                 // Download video
