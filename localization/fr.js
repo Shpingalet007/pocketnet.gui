@@ -1376,5 +1376,21 @@ _l.desktopPopupTitle = "Obtenir des informations non censurées dans l'applicati
 _l.desktopPopupAgree = "Télécharger l'application"
 _l.desktopPopupDisagree = "Pas maintenant"
 
+
+_l.deleteSavedPost = "Supprimer le post enregitré"
+_l.downloadMedia = "Télécharger le média"
+_l.doYouDownloadMedia = "Voulez-vous télécharger le média (image/vidéo) sur votre appareil ?"
+_l.gotosaved2 = "Afficher les posts"
+_l.yes = "Oui"
+_l.no = "Non"
+
 _l.profanity_tag = 'impiété'
 
+_l.saved = "Sauvegardé";
+_l.savePost = "Sauvegarder le post";
+_l.postsaved = "Post sauvegardé";
+_l.deleteSavedPost = "Supprimer le post enregistré";
+_l.doYouDownloadVideo = "Voulez-vous télécharger la vidéo sur votre appareil ?";
+_l.gotosaved2 = "Afficher les posts";
+_l.yes = "Oui";
+_l.no = "Non";

@@ -1024,5 +1024,13 @@ _l.desktopPopupTitle = "在 Bastyon 桌面应用程序中获取未经审查的�
 _l.desktopPopupAgree = "下载应用程序"
 _l.desktopPopupDisagree = "不是现在"
 
-
 _l.profanity_tag = '褻瀆'
+
+_l.saved = "已保存";
+_l.savePost = "保存帖子";
+_l.postsaved = "保存的帖子";
+_l.deleteSavedPost = "删除已保存的帖子";
+_l.doYouDownloadVideo = "你想在你的设备上下载视频吗？";
+_l.gotosaved2 = "转到已保存";
+_l.yes = "是";
+_l.no = "拒绝";
