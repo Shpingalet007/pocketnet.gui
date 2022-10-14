@@ -1,11 +1,9 @@
 {
     "name": "pocketnet",
-
     "version": "0.8.19",
     "versionsuffix": "3",
     "cordovaversion": "1.8.19",
     "cordovaversioncode": "180190",
-
     "description": "Bastyon desktop application",
     "author": "Pocketnet Community <support@pocketnet.app>",
     "company": "Pocketnet Community",
@@ -33,7 +31,7 @@
         "dev:bastyon": "node minimize.js -prodaction=false -path=/pocketnet/ -project=Bastyon",
         "dev:bastyon:test": "node minimize.js -prodaction=false -test=true -path=/pocketnet/ -project=Bastyon",
         "node:embedding": "node minimize.js -prodaction=true -vendor=30068 -path=/web/",
-        "fix:canvas": "npm i -D electron-rebuild && rm -R ./node-modules && npm i && ./node_modules/.bin/electron-rebuild"
+        "fix:canvas": "npm i -D electron-rebuild && rm -R ./node_modules && npm i && ./node_modules/.bin/electron-rebuild"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.6",
@@ -44,6 +42,7 @@
         "electron-builder": "^23.0.4",
         "electron-builder-notarize": "^1.5.0",
         "electron-notarize": "",
+        "electron-rebuild": "^3.2.9",
         "electron-reload": "",
         "electron-reloader": "",
         "humanize": "0.0.9"
@@ -77,6 +76,7 @@
         "get-free-https-proxy": "^2.0.2",
         "github-download": "^0.5.0",
         "hash-files": "^1.1.1",
+        "hex-captcha": "^2.0.3",
         "html-uglify": "^1.2.1",
         "iconv-lite": "",
         "image-js": "^0.21.9",
@@ -128,7 +128,6 @@
         "sortablejs": "^1.8.3",
         "standard": "^11.0.1",
         "svg-captcha": "^1.4.0",
-        "hex-captcha": "^2.0.3",
         "swagger-ui-express": "^4.1.4",
         "targz": "^1.0.1",
         "tcp-port-used": "^1.0.1",
