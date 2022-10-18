@@ -35,6 +35,8 @@ const Path = require("path");
 const child_process = require("child_process");
 const {unlink} = require("nedb/browser-version/browser-specific/lib/storage");
 
+const videoServerList = require("./peertube-servers.json");
+
 process.setMaxListeners(0);
 require('events').EventEmitter.defaultMaxListeners = 0
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -692,274 +694,10 @@ var Proxy = function (settings, manage, test, logger, reverseproxy) {
 
 			trustpeertube = []
 
-			var ins = {
-				1: [
-				  	{ host: 'pocketnetpeertube1.nohost.me', cantuploading: true, ip: '109.226.245.120'},
-					{ host: 'pocketnetpeertube2.nohost.me', cantuploading: true, ip: '94.73.223.24'},
-				],
-				5: [
-				  {
-					host: 'pocketnetpeertube5.nohost.me',
-					cantuploading: true,
-					ip: '95.217.209.217',
-				  },
-				  {
-					host: 'pocketnetpeertube7.nohost.me',
-					cantuploading: true,
-					ip: '188.187.45.218',
-				  },
-				],
-				6: [
-				  {
-					host: 'pocketnetpeertube4.nohost.me',
-					cantuploading: true,
-					ip: '135.181.108.193',
-				  },
-				  {
-					host: 'pocketnetpeertube6.nohost.me',
-					cantuploading: true,
-					ip: '159.69.127.9',
-				  },
-				],
-				8: [
-				  {
-					host: 'pocketnetpeertube8.nohost.me',
-					cantuploading: true,
-					old : true,
+			let ins = self.peertube.getLegacyList(videoServerList.combat);
 
-					ip: '192.236.161.131',
-				  },
-				  {
-					host: 'pocketnetpeertube9.nohost.me',
-					cantuploading: true,
-					ip: '178.154.200.50',
-				  },
-				],
-
-				10: [
-				  {
-					host: 'pocketnetpeertube10.nohost.me',
-					cantuploading: true,
-					ip: '23.254.226.253',
-				  },
-				  {
-					host: 'pocketnetpeertube11.nohost.me',
-					cantuploading: true,
-					ip: '84.252.138.108',
-				  },
-				],
-
-				12: [
-				  {
-					host: 'bastyonmma.pocketnet.app',
-					cantuploading: true,
-					ip: '88.99.34.74',
-				  },
-				  {
-					host: 'bastyonmma.nohost.me',
-					cantuploading: true,
-					ip: '49.12.231.72',
-				  },
-				],
-
-				13: [
-				  { host: '01rus.nohost.me', ip: '178.217.159.227' },
-				  { host: '02rus.pocketnet.app', ip: '31.184.215.67' },
-				],
-
-				14: [
-				  { host: 'pocketnetpeertube12.nohost.me', ip: '104.168.248.113' },
-				  { host: 'pocketnetpeertube13.nohost.me', ip: '62.84.115.93' },
-				],
-
-				15: [
-					{
-						host: 'peertube14.pocketnet.app',
-						ip: '178.154.251.235',
-					},
-					{
-						host: 'peertube15.pocketnet.app',
-						ip: '192.236.199.174',
-					},
-				],
-
-				16: [
-					{
-						host : 'poketnetpeertube.space',
-						cantuploading: true,
-
-						old : true,
-						ip: '178.217.155.168',
-					},
-					{
-						host : 'poketnetpeertube.ru',
-						cantuploading: true,
-
-						old : true,
-						ip: '178.217.159.224',
-					}
-				],
-
-
-				17: [
-					{
-						host : 'bastynode.ru',
-						cantuploading: true,
-
-						old : true,
-						ip: '81.23.152.91',
-					},
-					{
-						host : 'storemi.ru',
-						cantuploading: true,
-
-						old : true,
-						ip: '93.100.117.108',
-					},
-				],
-
-				18: [
-					{
-						host : 'bastynode1.ru',
-						cantuploading: true,
-
-						old : true,
-						ip: '81.23.151.94',
-					},
-					{
-						host : 'gf110.ru',
-						cantuploading: true,
-
-						old : true,
-						ip: '46.175.123.16',
-					},
-				],
-
-				19: [
-					{
-						host : 'bastyonpeertube.ru',
-						cantuploading: true,
-						ip: '178.217.155.169',
-					},
-					{
-						host : 'bastyonpeertube.site',
-						cantuploading: true,
-						ip: '178.217.155.170',
-					},
-
-				],
-
-				20: [
-					{
-						host : 'peertube17.pocketnet.app',
-						ip: '51.250.104.218',
-					}
-				],
-
-				21: [
-					{
-						host : 'peertube18.pocketnet.app',
-						ip: '51.250.41.252',
-					}
-				],
-
-				22: [
-					{
-						host : 'peertube19.pocketnet.app',
-						ip: '51.250.73.97',
-					}
-				],
-
-				23: [
-					{
-						host : 'peertube17mirror.pocketnet.app',
-						ip: '64.235.40.47',
-					}
-				],
-
-				24: [
-					{
-						host : 'peertube18mirror.pocketnet.app',
-						ip: '64.235.42.75 ',
-					}
-				],
-
-				25: [
-					{
-						host : 'peertube19mirror.pocketnet.app',
-						ip: '64.235.50.17',
-					}
-				],
-
-				26: [
-					{
-						host : 'peertube20.pocketnet.app',
-						ip: '157.90.240.231',
-					}
-				],
-
-				27: [
-					{
-						host : 'peertube21.pocketnet.app',
-						ip: '116.203.16.185',
-					}
-				],
-
-				28: [
-					{
-						host : 'peertube22.pocketnet.app',
-						ip: '104.168.136.179',
-					}
-				],
-
-				29: [
-					{
-						host : 'peertube23.pocketnet.app',
-						ip: '23.254.201.237',
-					}
-				],
-
-				30: [
-					{
-						host : 'peertube24.pocketnet.app',
-						ip: '23.254.224.63',
-					}
-				],
-
-				31: [
-					{
-						host : 'peertube25.pocketnet.app',
-						ip: '95.217.212.144',
-					}
-				],
-
-				32: [
-					{
-						host : 'peertube26.pocketnet.app',
-						ip: '49.12.106.120',
-					}
-				],
-				
-				33: [
-					{
-						host : 'peertube27.pocketnet.app',
-						ip: '49.12.102.26',
-					}
-				],
-
-				34: [
-					{
-						host : 'peertube28.pocketnet.app',
-						ip: '138.201.91.156',
-					}
-				],
-      		};
-
-			if (test){
-				ins = {0 : [
-					{ host: 'test.peertube.pocketnet.app', ip: '65.108.83.132' },
-					{ host: 'test.peertube2.pocketnet.app', ip: '95.216.212.153' },
-				]}
+			if (test) {
+				ins = self.peertube.getLegacyList(videoServerList.test);
 			}
 
 			_.each(ins, function(r){
@@ -973,6 +711,30 @@ var Proxy = function (settings, manage, test, logger, reverseproxy) {
 			return peertube.init({
 				roys : ins
 			})
+		},
+
+		getLegacyList: function (roysList) {
+			return roysList.map((roy) => {
+				const royPrepared = [{
+					host: roy.main.host,
+					ip: roy.main.ip,
+					cantuploading: roy.main.flags.isUploadDisabled,
+					old: roy.main.flags.isOld,
+				}];
+
+				if (!roy.mirror) {
+					return royPrepared;
+				}
+
+				royPrepared.push({
+					host: roy.mirror.host,
+					ip: roy.mirror.ip,
+					cantuploading: roy.mirror.flags.isUploadDisabled,
+					old: roy.mirror.flags.isOld,
+				});
+
+				return royPrepared;
+			});
 		},
 
 		destroy: function () {
