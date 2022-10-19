@@ -1,0 +1,452 @@
+{
+  "combat": [
+    {
+      "id": 1,
+      "main": {
+        "host": "pocketnetpeertube1.nohost.me",
+        "ip": "109.226.245.120",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube2.nohost.me",
+        "ip": "94.73.223.24",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 5,
+      "main": {
+        "host": "pocketnetpeertube5.nohost.me",
+        "ip": "95.217.209.217",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube7.nohost.me",
+        "ip": "188.187.45.218",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 6,
+      "main": {
+        "host": "pocketnetpeertube4.nohost.me",
+        "ip": "135.181.108.193",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube6.nohost.me",
+        "ip": "159.69.127.9",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 8,
+      "main": {
+        "host": "pocketnetpeertube8.nohost.me",
+        "ip": "192.236.161.131",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube9.nohost.me",
+        "ip": "178.154.200.50",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 10,
+      "main": {
+        "host": "pocketnetpeertube10.nohost.me",
+        "ip": "23.254.226.253",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube11.nohost.me",
+        "ip": "84.252.138.108",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 12,
+      "main": {
+        "host": "bastyonmma.pocketnet.app",
+        "ip": "88.99.34.74",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "bastyonmma.nohost.me",
+        "ip": "49.12.231.72",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 13,
+      "main": {
+        "host": "01rus.nohost.me",
+        "ip": "178.217.159.227",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "02rus.pocketnet.app",
+        "ip": "31.184.215.67",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 14,
+      "main": {
+        "host": "pocketnetpeertube12.nohost.me",
+        "ip": "104.168.248.113",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "pocketnetpeertube13.nohost.me",
+        "ip": "62.84.115.93",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 15,
+      "main": {
+        "host": "peertube14.pocketnet.app",
+        "ip": "178.154.251.235",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "peertube15.pocketnet.app",
+        "ip": "192.236.199.174",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 16,
+      "main": {
+        "host": "poketnetpeertube.space",
+        "ip": "178.217.155.168",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      },
+      "mirror": {
+        "host": "poketnetpeertube.ru",
+        "ip": "178.217.159.224",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      }
+    },
+    {
+      "id": 17,
+      "main": {
+        "host": "bastynode.ru",
+        "ip": "81.23.152.91",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      },
+      "mirror": {
+        "host": "storemi.ru",
+        "ip": "93.100.117.108",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      }
+    },
+    {
+      "id": 18,
+      "main": {
+        "host": "bastynode1.ru",
+        "ip": "81.23.151.94",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      },
+      "mirror": {
+        "host": "gf110.ru",
+        "ip": "46.175.123.16",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": true
+        }
+      }
+    },
+    {
+      "id": 19,
+      "main": {
+        "host": "bastyonpeertube.ru",
+        "ip": "178.217.155.169",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "bastyonpeertube.site",
+        "ip": "178.217.155.170",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    },
+    {
+      "id": 20,
+      "main": {
+        "host": "peertube17.pocketnet.app",
+        "ip": "51.250.104.218",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 21,
+      "main": {
+        "host": "peertube18.pocketnet.app",
+        "ip": "51.250.41.252",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 22,
+      "main": {
+        "host": "peertube19.pocketnet.app",
+        "ip": "51.250.73.97",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 23,
+      "main": {
+        "host": "peertube17mirror.pocketnet.app",
+        "ip": "64.235.40.47",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 24,
+      "main": {
+        "host": "peertube18mirror.pocketnet.app",
+        "ip": "64.235.42.75",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 25,
+      "main": {
+        "host": "peertube19mirror.pocketnet.app",
+        "ip": "64.235.50.17",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 26,
+      "main": {
+        "host": "peertube20.pocketnet.app",
+        "ip": "157.90.240.231",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 27,
+      "main": {
+        "host": "peertube21.pocketnet.app",
+        "ip": "116.203.16.185",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 28,
+      "main": {
+        "host": "peertube22.pocketnet.app",
+        "ip": "104.168.136.179",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 29,
+      "main": {
+        "host": "peertube23.pocketnet.app",
+        "ip": "23.254.201.237",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 30,
+      "main": {
+        "host": "peertube24.pocketnet.app",
+        "ip": "23.254.224.63",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 31,
+      "main": {
+        "host": "peertube25.pocketnet.app",
+        "ip": "95.217.212.144",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 32,
+      "main": {
+        "host": "peertube26.pocketnet.app",
+        "ip": "49.12.106.120",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 33,
+      "main": {
+        "host": "peertube27.pocketnet.app",
+        "ip": "49.12.102.26",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    },
+    {
+      "id": 34,
+      "main": {
+        "host": "peertube28.pocketnet.app",
+        "ip": "138.201.91.156",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": null
+    }
+  ],
+  "test": [
+    {
+      "id": 0,
+      "main": {
+        "host": "test.peertube.pocketnet.app",
+        "ip": "65.108.83.132",
+        "flags": {
+          "isUploadDisabled": false,
+          "isOld": false
+        }
+      },
+      "mirror": {
+        "host": "test.peertube2.pocketnet.app",
+        "ip": "95.216.212.153",
+        "flags": {
+          "isUploadDisabled": true,
+          "isOld": false
+        }
+      }
+    }
+  ]
+}
