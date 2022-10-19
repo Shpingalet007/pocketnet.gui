@@ -64,10 +64,10 @@ function proxifiedFetchFactory(electronIpcRenderer) {
                                 controller.close();
                                 closed = true;
 
-                                
+                                reject(new TypeError('Failed to fetch'));
                             }
 
-                            
+
                         };
                     }
                     electronIpcRenderer.once(`ProxifiedFetch : Closed[${id}]`, (event) => {
