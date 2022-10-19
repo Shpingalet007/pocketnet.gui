@@ -175,7 +175,7 @@
       "id": 16,
       "main": {
         "host": "poketnetpeertube.space",
-        "ip": "178.217.155.168",
+        "ip": "178.217.156.100",
         "flags": {
           "isUploadDisabled": true,
           "isOld": true
@@ -202,7 +202,7 @@
       },
       "mirror": {
         "host": "storemi.ru",
-        "ip": "93.100.117.108",
+        "ip": "176.117.159.25",
         "flags": {
           "isUploadDisabled": true,
           "isOld": true
@@ -213,7 +213,7 @@
       "id": 18,
       "main": {
         "host": "bastynode1.ru",
-        "ip": "81.23.151.94",
+        "ip": "81.23.152.37",
         "flags": {
           "isUploadDisabled": true,
           "isOld": true
@@ -232,7 +232,7 @@
       "id": 19,
       "main": {
         "host": "bastyonpeertube.ru",
-        "ip": "178.217.155.169",
+        "ip": "178.217.158.32",
         "flags": {
           "isUploadDisabled": true,
           "isOld": false
