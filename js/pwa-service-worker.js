@@ -3,6 +3,7 @@ let pwaFetch = (...args) => fetch(...args);
 if(typeof _Electron != 'undefined'){
     electron = require('electron');
     pwaFetch = (...args) => proxyFetch(...args);
+    fetch = (...args) => proxyFetch(...args);
 }
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
