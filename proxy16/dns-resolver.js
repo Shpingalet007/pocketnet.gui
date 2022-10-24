@@ -11,24 +11,6 @@ const ptDnsListRaw = require('./peertube-servers.json');
 
 const origCreateSecureContext = tls.createSecureContext;
 
-/*tls.createSecureContext = options => {
-	const context = origCreateSecureContext(options);
-
-/!*	const pem = fs
-		.readFileSync("./proxy16/ca-untrusted-root.crt", { encoding: "ascii" })
-		.replace(/\r\n/g, "\n");
-
-	const certs = pem.match(/-----BEGIN CERTIFICATE-----\n[\s\S]+?\n-----END CERTIFICATE-----/g);
-
-	if (!certs) {
-		throw new Error(`Could not parse certificate ./rootCA.crt`);
-	}*!/
-
-	context.context.removeCACert('');
-
-	return context;
-};*/
-
 const dnsList = [
 	...Object.keys(anyDnsList).map(lk => anyDnsList[lk]).flat(),
 	...ptDnsListRaw.combat.map(s => s.main),
@@ -91,13 +73,3 @@ const getTransportAgent = (scheme) => {
 };
 
 module.exports = { getTransportAgent, checkServerIdentity };
-
-fetch('http://ipinfo.io/ip', {
-	agent: getTransportAgent('http')
-}).then(async (result) => {
-	const ip = await result.text();
-
-	console.log(ip);
-}).catch((err) => {
-	console.log(err);
-});

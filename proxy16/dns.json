@@ -107,5 +107,14 @@
         "D913A95067DEAF830DCEB50C19A7C0D314E6C75E"
       ]
     }
+  ],
+  "other": [
+    {
+      "host": "ipinfo.io",
+      "ip":"34.117.59.81",
+      "security": [
+        "3A869AD0BDE127712E3FA131234D83202E3C8A2C"
+      ]
+    }
   ]
 }
