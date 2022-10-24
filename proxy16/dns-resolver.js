@@ -1,0 +1,103 @@
+const http = require('http');
+const https = require('https');
+const dns = require('dns/promises');
+const { SocksProxyAgent } = require('socks-proxy-agent');
+const tls = require("tls");
+const fs = require("fs");
+const fetch = require('node-fetch');
+
+const anyDnsList = require('./dns.json');
+const ptDnsListRaw = require('./peertube-servers.json');
+
+const origCreateSecureContext = tls.createSecureContext;
+
+/*tls.createSecureContext = options => {
+	const context = origCreateSecureContext(options);
+
+/!*	const pem = fs
+		.readFileSync("./proxy16/ca-untrusted-root.crt", { encoding: "ascii" })
+		.replace(/\r\n/g, "\n");
+
+	const certs = pem.match(/-----BEGIN CERTIFICATE-----\n[\s\S]+?\n-----END CERTIFICATE-----/g);
+
+	if (!certs) {
+		throw new Error(`Could not parse certificate ./rootCA.crt`);
+	}*!/
+
+	context.context.removeCACert('');
+
+	return context;
+};*/
+
+const dnsList = [
+	...Object.keys(anyDnsList).map(lk => anyDnsList[lk]).flat(),
+	...ptDnsListRaw.combat.map(s => s.main),
+	...ptDnsListRaw.combat.map(s => s.mirror),
+	...ptDnsListRaw.test.map(s => s.main),
+	...ptDnsListRaw.test.map(s => s.mirror)
+].filter(e => !!e);
+
+const hybridLookup = () => async (hostname, _, cb) => {
+	const resolver = new dns.Resolver({ tries: 2, timeout: 3000 });
+	resolver.setServers([...dns.getServers(), '76.76.2.0', '76.76.10.0']);
+
+	const resolvedIps = await resolver.resolve(hostname);
+	const localIps = [dnsList.find(h => h.host === hostname)?.ip].filter(e => !!e);
+
+	if (!resolvedIps.length && !localIps.length) {
+		throw new Error(`Unable to resolve ${hostname}`);
+	}
+
+	if (resolvedIps.length) {
+		cb(null, resolvedIps[0], 4);
+		return;
+	}
+
+	cb(null, localIps[0], 4);
+};
+
+const checkServerIdentity = (hostname, cert) => {
+	const err = tls.checkServerIdentity(hostname, cert);
+
+	if (err) {
+		return err;
+	}
+
+	const localSslPins = dnsList.find(h => h.host === hostname)?.security || [];
+	const sslFingerprint = cert.fingerprint.replaceAll(':', '');
+
+	const isSslPinned = (localSslPins.length !== 0);
+	const foundSslPin = localSslPins.some(p => p === sslFingerprint);
+
+	if (isSslPinned && !foundSslPin) {
+		const msg = `Certificate pinning error for ${hostname}`;
+		console.log('-------');
+		console.log(msg);
+		console.log(hostname, sslFingerprint);
+		console.log('-------');
+		return new Error(msg);
+	}
+}
+
+const getTransportAgent = (scheme) => {
+	return new SocksProxyAgent({
+		protocol: 'socks5h',
+		hostname: '127.0.0.1',
+		port: 9050,
+		lookup: hybridLookup(),
+		maxCachedSessions: 0,
+		tls: { checkServerIdentity },
+	});
+};
+
+module.exports = { getTransportAgent, checkServerIdentity };
+
+fetch('http://ipinfo.io/ip', {
+	agent: getTransportAgent('http')
+}).then(async (result) => {
+	const ip = await result.text();
+
+	console.log(ip);
+}).catch((err) => {
+	console.log(err);
+});

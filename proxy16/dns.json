@@ -1,0 +1,111 @@
+{
+  "internal": [
+    {
+      "host": "bastyon.com",
+      "ip": "185.148.147.15",
+      "security": [
+        "9475900835CF8C1F912B97A4B41F4F8071A76264"
+      ]
+    },
+    {
+      "host": "pocketnet.app",
+      "ip": "185.148.147.15",
+      "security": [
+        "0379A6B027F822627B031715BFCAE51DB5AB26DE"
+      ]
+    }
+  ],
+  "internal-chat": [
+    {
+      "host": "matrix.pocketnet.app",
+      "ip": "65.21.107.115",
+      "security": [
+        "B963A0F28DDB0FE7D91A9C8C62E057358FCE10EF"
+      ]
+    },
+    {
+      "host": "test.matrix.pocketnet.app",
+      "ip": "65.21.110.139",
+      "security": [
+        "115475B9ED523234F86CC13264C563AC185714A1"
+      ]
+    }
+  ],
+  "internal-proxies": [
+    {
+      "host": "1.pocketnet.app",
+      "ip": "135.181.196.243",
+      "security": [
+        "C5AE5224B85CD5055FDEAE63745E2DA10909942F"
+      ]
+    },
+    {
+      "host": "2.pocketnet.app",
+      "ip": "65.21.56.203",
+      "security": [
+        "7E04E36719BACA71E005096DCB7344A66084CDA3"
+      ]
+    },
+    {
+      "host": "3.pocketnet.app",
+      "ip": "65.21.57.14",
+      "security": [
+        "AD5AE293F7C9591868B0CCA339F4CD60D12C5126"
+      ]
+    },
+    {
+      "host": "4.pocketnet.app",
+      "ip": "51.250.97.62",
+      "security": [
+        "68B90EB38C0EB7CCD84AA274BDF64A8E6DC3331C"
+      ]
+    },
+    {
+      "host": "5.pocketnet.app",
+      "ip": "5.161.82.241",
+      "security": [
+        "4EB165A3EB081C6F3C1B124E3DF762EAB9EDA2FE"
+      ]
+    },
+    {
+      "host": "6.pocketnet.app",
+      "ip": "23.254.228.89",
+      "security": [
+        "2B1D06E2105B7DDBE383367D07185AB0EB9C9186"
+      ]
+    }
+  ],
+  "code-providers": [
+    {
+      "host": "github.com",
+      "ip": "140.82.121.3",
+      "security": [
+        "1E16CC3F842F65FCC0AB932D638AC64A95C91B7A"
+      ]
+    },
+    {
+      "host": "cdn.jsdelivr.net",
+      "ip": "151.101.129.229",
+      "security": [
+        "5C61302F8C51BF3D79B53A049A91F01CD9788740"
+      ]
+    }
+  ],
+  "media-providers": [
+    {
+      "host": "i.imgur.com",
+      "ip": "151.101.132.193",
+      "security": [
+        "3A869AD0BDE127712E3FA13A19CD83202E3C8A2C"
+      ]
+    },
+    {
+      "host": "img.youtube.com",
+      "ip": "172.217.168.174",
+      "security": [
+        "B4B41459B2623D111E5751E0866F981C9891C2B1",
+        "D913A95067DEAF830DCEB50C19A7C0D314E6C75E"
+      ]
+    }
+  ]
+}
