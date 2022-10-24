@@ -48,10 +48,10 @@ const checkServerIdentity = (hostname, cert) => {
 	const localSslPins = dnsList.find(h => h.host === hostname)?.security || [];
 	const sslFingerprint = cert.fingerprint.replaceAll(':', '');
 
-	const isSslPinned = (localSslPins.length !== 0);
+	const isCheckEnabledForHost = (localSslPins.length !== 0);
 	const foundSslPin = localSslPins.some(p => p === sslFingerprint);
 
-	if (isSslPinned && !foundSslPin) {
+	if (isCheckEnabledForHost && !foundSslPin) {
 		const msg = `Certificate pinning error for ${hostname}`;
 		console.log('-------');
 		console.log(msg);
