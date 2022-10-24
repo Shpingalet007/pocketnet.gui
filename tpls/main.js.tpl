@@ -331,8 +331,6 @@ function createBadgeOS() {
 
 function initApp() {
 
-    app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
-
     createWindow();
 
     createBadgeOS();

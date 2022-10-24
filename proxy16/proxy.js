@@ -40,7 +40,6 @@ const videoServerList = require("./peertube-servers.json");
 
 process.setMaxListeners(0);
 require('events').EventEmitter.defaultMaxListeners = 0
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 //////////////
 /*
