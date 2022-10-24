@@ -62,13 +62,12 @@ const checkServerIdentity = (hostname, cert) => {
 }
 
 const getTransportAgent = (scheme) => {
-	return new SocksProxyAgent({
-		protocol: 'socks5h',
-		hostname: '127.0.0.1',
-		port: 9050,
+	const httpModule = scheme === 'http' ? http : https;
+
+	return new httpModule.Agent({
 		lookup: hybridLookup(),
 		maxCachedSessions: 0,
-		tls: { checkServerIdentity },
+		checkServerIdentity,
 	});
 };
 
