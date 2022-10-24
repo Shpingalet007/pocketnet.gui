@@ -75,6 +75,232 @@
       ]
     }
   ],
+  "internal-media-providers": [
+    {
+      "host": "pocketnetpeertube1.nohost.me",
+      "ip": "109.226.245.120",
+      "security": [
+        "A4E279CD1CFE6C4A2F3D7FBD20BBAC10518AE057"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube2.nohost.me",
+      "ip": "94.73.223.24",
+      "security": [
+        "597EB8CA819E1CCF851427ABFE2EE2937E49B67C"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube4.nohost.me",
+      "ip": "135.181.108.193",
+      "security": [
+        "3E11AC9078978D9F31522A9E09FBDFC884885F86"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube5.nohost.me",
+      "ip": "95.217.209.217",
+      "security": [
+        "6B1342D7C7601BA57FE799829DC0DA562ECE6A5A"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube6.nohost.me",
+      "ip": "159.69.127.9",
+      "security": [
+        "026BB5FAABBC0832CCD9623D8D796C8DB55D0B15"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube7.nohost.me",
+      "ip": "188.187.45.218",
+      "security": [
+        "E28318167E2B2383F31BB5FC5C87953ADD1699F4"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube9.nohost.me",
+      "ip": "178.154.200.50",
+      "security": [
+        "3FAFF814FA9AB24B1BE4FFF845FB8A3FF646A24A"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube10.nohost.me",
+      "ip": "23.254.226.253",
+      "security": [
+        "BC5E58D9FCF392C611C74608B5DD97DEF713124C"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube11.nohost.me",
+      "ip": "84.252.138.108",
+      "security": [
+        "F09032DEEDA39BD5CBEBA9381B341E6386B41EF4"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube12.nohost.me",
+      "ip": "104.168.248.113",
+      "security": [
+        "95E6A6F5A66797E04355A4C549023EE5E7767132"
+      ]
+    },
+    {
+      "host": "pocketnetpeertube13.nohost.me",
+      "ip": "62.84.115.93",
+      "security": [
+        "C1A9C1F6862239022172B450646988892D6CB9BE"
+      ]
+    },
+    {
+      "host": "peertube14.pocketnet.app",
+      "ip": "178.154.251.235",
+      "security": [
+        "1F08C7861B7FA45DA5399C72AF4E8BB53612D5FF"
+      ]
+    },
+    {
+      "host": "peertube17mirror.pocketnet.app",
+      "ip": "64.235.40.47",
+      "security": [
+        "156D741FD76707870911ECEB1D79861718B7C583"
+      ]
+    },
+    {
+      "host": "peertube18mirror.pocketnet.app",
+      "ip": "64.235.42.75",
+      "security": [
+        "D939269446E2D5AA2553191CF03389354FAA35D8"
+      ]
+    },
+    {
+      "host": "peertube19mirror.pocketnet.app",
+      "ip": "64.235.42.75",
+      "security": [
+        "71D1152B690CBE6684DA2350FEACCB73F061DA06"
+      ]
+    },
+    {
+      "host": "peertube17.pocketnet.app",
+      "ip": "51.250.104.218",
+      "security": [
+        "11BFDE729AEC46C38FD14489FA2AE2CDB9CE345D"
+      ]
+    },
+    {
+      "host": "peertube18.pocketnet.app",
+      "ip": "51.250.41.252",
+      "security": [
+        "7309982B3B4E40BC2467E40AC53E84E4ADCC106B"
+      ]
+    },
+    {
+      "host": "peertube19.pocketnet.app",
+      "ip": "51.250.73.97",
+      "security": [
+        "46C74566BF5BBE8B6B5633924615E8DAF9638319"
+      ]
+    },
+    {
+      "host": "peertube20.pocketnet.app",
+      "ip": "157.90.240.231",
+      "security": [
+        "FC97DE6B093704D1B09F01411E0ED81EABC296BB"
+      ]
+    },
+    {
+      "host": "peertube21.pocketnet.app",
+      "ip": "116.203.16.185",
+      "security": [
+        "CE98C59B7247CF4918A3AA4AF1BB17AECE6BFD7D"
+      ]
+    },
+    {
+      "host": "peertube22.pocketnet.app",
+      "ip": "104.168.136.179",
+      "security": [
+        "CF6EDCDAC8E788D4C8A612B9378B0BABF8871EC1"
+      ]
+    },
+    {
+      "host": "peertube23.pocketnet.app",
+      "ip": "23.254.201.237",
+      "security": [
+        "E89204044AC278DCAB023254C6385DEE21A6FA05"
+      ]
+    },
+    {
+      "host": "peertube24.pocketnet.app",
+      "ip": "23.254.224.63",
+      "security": [
+        "A266AAFCA14D15AB6E71D9DD3BCBB273FC09FA14"
+      ]
+    },
+    {
+      "host": "peertube25.pocketnet.app",
+      "ip": "95.217.212.144",
+      "security": [
+        "076723DD6ACD48C3BD7410F1AD0EAA5785BE5703"
+      ]
+    },
+    {
+      "host": "peertube26.pocketnet.app",
+      "ip": "49.12.106.120",
+      "security": [
+        "F7EA02213D73F121228E1D073D206855D9AF8F1B"
+      ]
+    },
+    {
+      "host": "peertube27.pocketnet.app",
+      "ip": "49.12.102.26",
+      "security": [
+        "DDDADD18930F21268068E3974D77020EE79B2C97"
+      ]
+    },
+    {
+      "host": "peertube28.pocketnet.app",
+      "ip": "138.201.91.156",
+      "security": [
+        "39DDFBE57BBA8CC59C067987EBDF4C5B1257A634"
+      ]
+    },
+    {
+      "host": "01rus.nohost.me",
+      "ip": "178.217.159.227",
+      "security": [
+        "73CCEB12D6AB7C014BA50C69D3D7AA4B9D107F71"
+      ]
+    },
+    {
+      "host": "02rus.pocketnet.app",
+      "ip": "178.217.159.227",
+      "security": [
+        "B13E0CE7F44B43DAFB4DFE559B2762EF89BFD190"
+      ]
+    },
+    {
+      "host": "bastyonmma.nohost.me",
+      "ip": "49.12.231.72",
+      "security": [
+        "87FE44A8BEE0E72ADCDE015D98491BA7E782195E"
+      ]
+    },
+    {
+      "host": "bastyonpeertube.site",
+      "ip": "178.217.155.170",
+      "security": [
+        "4BCA4919F9BCB845E09FAC8904BBC464B60A62B5"
+      ]
+    },
+    {
+      "host": "bastyonmma.pocketnet.app",
+      "ip": "88.99.34.74",
+      "security": [
+        "77F9BCC4F653B18FB7261BECFD16DBE9F0C26218"
+      ]
+    }
+  ],
   "code-providers": [
     {
       "host": "github.com",
@@ -84,10 +310,18 @@
       ]
     },
     {
+      "host": "raw.githubusercontent.com",
+      "ip": "185.199.110.133",
+      "security": [
+        "8F0E792471C5A7D2A7467630C13CB72A13B001B2"
+      ]
+    },
+    {
       "host": "cdn.jsdelivr.net",
       "ip": "151.101.129.229",
       "security": [
-        "5C61302F8C51BF3D79B53A049A91F01CD9788740"
+        "5C61302F8C51BF3D79B53A049A91F01CD9788740",
+        "45B78FF28101386C2F1B25B1861257FD6DB5E780"
       ]
     }
   ],
@@ -110,10 +344,17 @@
   ],
   "other": [
     {
+      "host": "api.telegram.org",
+      "security": [
+        "0736893D0FCC8CF7D019B78339C4D515709AC65D"
+      ]
+    },
+    {
       "host": "ipinfo.io",
       "ip":"34.117.59.81",
       "security": [
-        "3A869AD0BDE127712E3FA131234D83202E3C8A2C"
+        "3A869AD0BDE127712E3FA131234D83202E3C8A2C",
+        "231B7DC231D422BCD5485041D8B1062839BEF1BD"
       ]
     }
   ]

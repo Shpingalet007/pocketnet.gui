@@ -59,6 +59,9 @@ const checkServerIdentity = (hostname, cert) => {
 		console.log('-------');
 		return new Error(msg);
 	}
+
+	const msg = `Certificate pinning correct for ${hostname}`;
+	console.log(msg);
 }
 
 const getTransportAgent = (scheme) => {
