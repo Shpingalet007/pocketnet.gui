@@ -82,6 +82,8 @@ export function proxifiedFetchFactory(electronIpcRenderer: Electron.IpcRenderer)
 
                                 controller.close();
                                 closed = true;
+
+                                reject(new TypeError('Failed to fetch'));
                             }
                         };
                     }

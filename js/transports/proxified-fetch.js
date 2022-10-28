@@ -59,6 +59,8 @@ function proxifiedFetchFactory(electronIpcRenderer) {
                                 electronIpcRenderer.send('ProxifiedFetch : Abort', id);
                                 controller.close();
                                 closed = true;
+
+                                reject(new TypeError('Failed to fetch'));
                             }
                         };
                     }

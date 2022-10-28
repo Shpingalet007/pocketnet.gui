@@ -1,4 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 process.setMaxListeners(0);
 var f = require('./functions');
 const request = require('request-promise');

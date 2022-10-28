@@ -8,7 +8,6 @@ var jquery = {}
 var ogParser = require("./lib/og-parser-edited.js");
 var iconv = require('iconv-lite');
 const autoenc = require('node-autodetect-utf8-cp1251-cp866');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 var nremotelink = 'https://1.pocketnet.app/opengraph/parse'
 
 var Remote = function(app){

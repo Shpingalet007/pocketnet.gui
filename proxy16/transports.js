@@ -2,9 +2,17 @@
 
 const _request = require("request");
 const _axios = require("axios");
-const _fetch = require("node-fetch")
-const { SocksProxyAgent } = require('socks-proxy-agent')
-const httpsAgent = new SocksProxyAgent('socks5h://127.0.0.1:9050')
+const fetch = require("node-fetch");
+const { SocksProxyAgent } = require('socks-proxy-agent');
+const { getTransportAgent, checkServerIdentity } = require('./dns-resolver');
+
+const torAgent = new SocksProxyAgent({
+    protocol: 'socks5h',
+    hostname: '127.0.0.1',
+    port: 9050,
+    maxCachedSessions: 0,
+    tls: { checkServerIdentity },
+});
 
 module.exports = function (enable = false) {
     const self = {};
@@ -51,7 +59,7 @@ module.exports = function (enable = false) {
 
         if (isProxyUsed && enable) {
             await awaitTor();
-            preparedOpts.httpsAgent = httpsAgent;
+            preparedOpts.httpsAgent = torAgent;
         }
 
         try {
@@ -77,10 +85,13 @@ module.exports = function (enable = false) {
 
     self.fetch = async (url, opts = {}) => {
         if (isUseProxy(url) && enable) {
-            opts.agent = httpsAgent;
+            opts.agent = torAgent;
         }
         try {
-            return await _fetch(url, opts);
+            return await fetch(url, {
+                agent: getTransportAgent('https'),
+                ...opts,
+            });
         } catch (e) {
             const isTorEnabled = await awaitTor();
 
@@ -103,7 +114,7 @@ module.exports = function (enable = false) {
     self.request = async (options, callBack) => {
         let req = _request;
         if (isUseProxy(options.url) && enable) {
-            req = _request.defaults({agent: httpsAgent});
+            req = _request.defaults({agent: torAgent});
         }
         try {
             const data = req(options, (...args)=>{

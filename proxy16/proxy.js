@@ -36,9 +36,10 @@ const Path = require("path");
 const child_process = require("child_process");
 const {unlink} = require("nedb/browser-version/browser-specific/lib/storage");
 
+const videoServerList = require("./peertube-servers.json");
+
 process.setMaxListeners(0);
 require('events').EventEmitter.defaultMaxListeners = 0
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 //////////////
 /*
@@ -738,40 +739,7 @@ var Proxy = function (settings, manage, test, logger, reverseproxy) {
 
 			trustpeertube = []
 
-			var ins = {
-				1: [
-				  	{ host: 'pocketnetpeertube1.nohost.me', cantuploading: true, ip: '109.226.245.120'},
-					{ host: 'pocketnetpeertube2.nohost.me', cantuploading: true, ip: '94.73.223.24'},
-				],
-				5: [
-				  {
-					host: 'pocketnetpeertube5.nohost.me',
-					cantuploading: true,
-					ip: '95.217.209.217',
-				  },
-				  {
-					host: 'pocketnetpeertube7.nohost.me',
-					cantuploading: true,
-					ip: '188.187.45.218',
-				  },
-				],
-				6: [
-				  {
-					host: 'pocketnetpeertube4.nohost.me',
-					cantuploading: true,
-					ip: '135.181.108.193',
-				  },
-				  {
-					host: 'pocketnetpeertube6.nohost.me',
-					cantuploading: true,
-					ip: '159.69.127.9',
-				  },
-				],
-				8: [
-				  {
-					host: 'pocketnetpeertube8.nohost.me',
-					cantuploading: true,
-					old : true,
+			let ins = self.peertube.getLegacyList(videoServerList.combat);
 
 					ip: '192.236.161.131',
 				  },
@@ -1034,6 +1002,30 @@ var Proxy = function (settings, manage, test, logger, reverseproxy) {
 			return peertube.init({
 				roys : ins
 			})
+		},
+
+		getLegacyList: function (roysList) {
+			return roysList.map((roy) => {
+				const royPrepared = [{
+					host: roy.main.host,
+					ip: roy.main.ip,
+					cantuploading: roy.main.flags.isUploadDisabled,
+					old: roy.main.flags.isOld,
+				}];
+
+				if (!roy.mirror) {
+					return royPrepared;
+				}
+
+				royPrepared.push({
+					host: roy.mirror.host,
+					ip: roy.mirror.ip,
+					cantuploading: roy.mirror.flags.isUploadDisabled,
+					old: roy.mirror.flags.isOld,
+				});
+
+				return royPrepared;
+			});
 		},
 
 		destroy: function () {
