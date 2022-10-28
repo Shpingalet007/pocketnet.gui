@@ -76,4 +76,15 @@ const getTransportAgent = (scheme) => {
 	});
 };
 
-module.exports = { getTransportAgent, checkServerIdentity };
+const getSocksTransportAgent = (scheme) => {
+	return new SocksProxyAgent({
+		protocol: 'socks5h',
+		hostname: '127.0.0.1',
+		port: 8889,
+		tls: {
+			checkServerIdentity
+		},
+	});
+}
+
+module.exports = { getTransportAgent, checkServerIdentity, getSocksTransportAgent };
