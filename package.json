@@ -1,11 +1,9 @@
 {
     "name": "pocketnet",
-
     "version": "0.8.22",
     "versionsuffix": "4",
     "cordovaversion": "1.8.22",
     "cordovaversioncode": "180204",
-
     "description": "Bastyon desktop application",
     "author": "Pocketnet Community <support@pocketnet.app>",
     "company": "Pocketnet Community",
@@ -135,6 +133,7 @@
         "uglifycss": "0.0.29",
         "underscore": "",
         "winston": "^3.3.3",
+        "yaping": "0.0.3",
         "yuicompressor": "^2.4.8"
     },
     "build": {
