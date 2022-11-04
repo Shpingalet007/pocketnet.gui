@@ -80,7 +80,7 @@ const getSocksTransportAgent = (scheme) => {
 	return new SocksProxyAgent({
 		protocol: 'socks5h',
 		hostname: '127.0.0.1',
-		port: 8889,
+		port: 9050,
 		tls: {
 			checkServerIdentity
 		},

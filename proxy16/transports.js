@@ -5,7 +5,7 @@ const _axios = require("axios");
 const fetch = require("node-fetch");
 const { SocksProxyAgent } = require('socks-proxy-agent');
 const { getTransportAgent, checkServerIdentity, getSocksTransportAgent } = require('./dns-resolver');
-const httpsAgent = new SocksProxyAgent('socks5h://127.0.0.1:8889')
+// const httpsAgent = new SocksProxyAgent('socks5h://127.0.0.1:8889')
 const torHttpsAgent = new SocksProxyAgent('socks5h://127.0.0.1:9050')
 
 const torAgent = new SocksProxyAgent({
@@ -86,24 +86,50 @@ module.exports = function (enable = false) {
     self.axios.patch = (...args) => axiosRequest(...args);
 
     self.fetch = async (url, opts = {}) => {
-        //if (isUseProxy(url) && enable) {
+        function timeout(time) {
+            const abortControl = new AbortController();
+
+            setTimeout(() => abortControl.abort(), time * 1000);
+
+            return abortControl.signal;
+        }
+
+        if (isUseProxy(url) && enable) {
             opts.agent = getSocksTransportAgent();
-        //}
+        }
+
         try {
+            opts.signal = timeout(15);
+
+            //console.log('000', url, 'tor enabled?', !!opts.agent);
             return await fetch(url, {
                 agent: getTransportAgent('https'),
                 ...opts,
+            }).then(async (res) => {
+                //console.log(111);
+                return res;
+            }).catch((err) => {
+                //console.log(222);
+                throw err;
             });
         } catch (e) {
+            //console.log(333);
             const isTorEnabled = await awaitTor();
+            //console.log(444);
 
             if (enable && isTorEnabled && !isUseProxy(url)) {
                 proxifyHost(url)
 
                 opts.agent = torHttpsAgent;
+                opts.signal = timeout(15);
 
                 return await self.fetch(url, opts)
+                  .then((res) => {
+                      //console.log(555);
+                      return res;
+                  })
                   .catch((err) => {
+                      //console.log(666);
                       if (err.code !== 'FETCH_ABORTED') {
                           // For debugging, don't remove
                           // console.log(err);
@@ -143,11 +169,11 @@ module.exports = function (enable = false) {
         const torcontrol = self.torapplications;
 
         if (!torcontrol || torcontrol?.isStopped()) {
-            return false;
+            return Promise.resolve(false);
         }
 
         if (torcontrol.isStarted()) {
-            return true;
+            return Promise.resolve(true);
         }
 
         return new Promise((resolve, reject) => {
