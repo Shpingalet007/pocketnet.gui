@@ -215,7 +215,7 @@
     </universal-links>
     <% if(!store) {%>
 
-        <hook type="before_build" src="hooks/before-build.js" />
+        <hook type="before_prepare" src="hooks/before-build.js" />
 
     <% } %>
 </widget>
