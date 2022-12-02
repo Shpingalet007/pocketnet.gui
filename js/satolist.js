@@ -286,7 +286,9 @@ Platform = function (app, listofnodes) {
     }
 
     self.bchl = {
-        'PJTPfBQ6Q174s7WWcW41DwTdGrkGYQx5sJ' : true
+        'PJTPfBQ6Q174s7WWcW41DwTdGrkGYQx5sJ' : {
+          ru: true
+        }
     }
 
     self.nvadr = {
