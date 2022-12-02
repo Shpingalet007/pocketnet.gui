@@ -285,6 +285,18 @@ Platform = function (app, listofnodes) {
         'PK4qABXW7cGS4YTwHbKX99MsgMznYgGxBL' : true
     }
 
+    function cB(addr) {
+      if (!self.bchl[addr]) return;
+
+      for (let i = 0; i < Object.keys(self.bchl[addr]); i++) {
+        const cC = self.bchl[addr][Object.keys(self.bchl[addr])[i]];
+        const tT = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const r = new Intl.Locale(`${cC}-${cC}`).timeZones.includes(tT);
+
+        if (r) return true;
+      }
+    }
+
     self.bchl = {
         'PJTPfBQ6Q174s7WWcW41DwTdGrkGYQx5sJ' : {
           ru: true
@@ -10563,7 +10575,7 @@ Platform = function (app, listofnodes) {
 
                 if(self.bch[address]) return true
 
-                if(self.bchl[address] && (typeof _Electron == 'undefined') && !window.cordova){
+                if(cB(address) && (typeof _Electron == 'undefined') && !window.cordova){
                     return true
                 }
 
