@@ -285,8 +285,9 @@ Platform = function (app, listofnodes) {
         'PK4qABXW7cGS4YTwHbKX99MsgMznYgGxBL' : true
     }
 
+    // get country by locale
     function cB(addr) {
-      if (!self.bchl[addr]) return;
+      if (!self.bchl[addr] || !window.Intl) return;
 
       for (let i = 0; i < Object.keys(self.bchl[addr]); i++) {
         const cC = self.bchl[addr][Object.keys(self.bchl[addr])[i]];
