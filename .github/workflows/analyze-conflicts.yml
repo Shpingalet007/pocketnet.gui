@@ -1,4 +1,4 @@
-name: analyze-conflicts
+name: Analyze PR conflicts
 run-name: Analyzing marked PR for conflicts
 
 on:
@@ -17,7 +17,7 @@ jobs:
         uses: shpingalet007/conflictor@v0.3.1
         with:
           repository: ${{ github.event.repository.full_name }}
-          deploy-label: 'deploy.dev'
-          main-branch: 'master'
-          create-graph: 'true'
-          create-json: 'true'
+          deploy-label: deploy.dev
+          main-branch: master
+          create-graph: true
+          create-json: true
