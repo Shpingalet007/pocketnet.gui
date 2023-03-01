@@ -8,7 +8,7 @@ require('./js/functions.js');
 var uglifyJS = require("uglify-js");
 var uglifycss = require('uglifycss');
 var ncp = require('ncp').ncp;
-const _path = require('path');
+const path = require('path');
 ncp.limit = 16;
 
 var minifyHtml = require('html-minifier').minify;
@@ -1051,6 +1051,33 @@ fs.exists(mapJsPath, function (exists) {
 	}
 });
 
+
+const copyFolderSync = (from, to) => {
+	const copyFiles = (err) => {
+		if (err) {
+			console.error(err);
+			return;
+		}
+
+		fs.mkdirSync(to);
+		fs.readdirSync(from).forEach(element => {
+			if (fs.lstatSync(path.join(from, element)).isFile()) {
+				fs.copyFileSync(path.join(from, element), path.join(to, element));
+			} else {
+				copyFolderSync(path.join(from, element), path.join(to, element));
+			}
+		});
+	};
+
+	if (fs.existsSync(to)) {
+		fs.rm(to, { recursive: true, force: true }, copyFiles);
+		return;
+	}
+
+	copyFiles();
+};
+
+copyFolderSync('./node_modules/@shpingalet007/bastyon-chat/dist', './chat');
 
 
 var regForjs = function(modulename, c)
