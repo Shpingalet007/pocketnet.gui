@@ -39,7 +39,7 @@
         "node-autodetect-utf8-cp1251-cp866": "",
         "node-fetch": "^2.6.9",
         "nodejs-base64": "^1.0.3",
-        "nodemon": "^2.0.7",
+        "nodemon": "^2.0.22",
         "random": "^2.2.0",
         "redaxios": "^0.5.1",
         "request": "^2.88.2",
