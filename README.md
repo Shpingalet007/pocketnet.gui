@@ -32,8 +32,8 @@
 
 Users of the social network can connect in three ways: 
 - via the [official website](https://bastyon.com/)
-- through the [desktop application](https://github.com/pocketnetteam/pocketnet.gui/releases/latest)
-- with the mobile app (available for [iOS](https://apps.apple.com/es/app/bastyon/id1537944200) and [Android](https://play.google.com/store/apps/details?id=pocketnet.app))
+- through the [mobile apps](https://github.com/pocketnetteam/pocketnet.gui#download-links) 
+- by downloading the [desktop app](https://github.com/pocketnetteam/pocketnet.gui#download-links)
 
 ## Creating an Account on Bastyon
 
@@ -53,16 +53,25 @@ Your Private Key is unique and must be kept **confidential**.
 
 # How Bastyon is Different from other Social Networks
 
-Bastyon is an Open Source project that runs on distributed nodes, offering users a unique and different experience compared to major social networks such as Facebook, Twitter, YouTube and Instagram. It does not require any personal information such as email address or phone number, and does not track user behaviour online. Furthermore, it provides an encrypted end-to-end chat system that is not associated with any email address or phone number, unlike popular messaging apps like Telegram, Signal, and WhatsApp.
+Bastyon is an **Open Source project** that runs on distributed nodes, offering users a unique and different experience compared to major social networks such as **Facebook, Twitter, YouTube and Instagram**. It does not require any personal information such as email address or phone number, and **does not track user behaviour online**. Additionally, it provides an **encrypted end-to-end chat system** that is not associated with any email address or phone number, unlike popular messaging apps like Telegram, Signal, and WhatsApp.
 
-Bastyon is also based on blockchain technology, making all operations (posts, videos, comments, likes, etc.) immutable and unalterable. Additionally, it provides users with freedom of speech without any limitations or bans due to political or religious beliefs. Lastly, the control is held by the users themselves. High-reputation users who gain "reputation points" through likes and comments on their posts are automatically ranked as administrators. If several admins report the same post, it is hidden – similar to what happens on Wikipedia, where a board of admins is elected by all users to make decisions.
+Furthermore, Bastyon is also based on **blockchain technology**, making all operations (posts, videos, comments, likes, etc.) **immutable and unalterable**. Additionally, it provides users with **freedom of speech without any limitations or bans due to political or religious beliefs**. Lastly, the **control is held by the users themselves**. High-reputation users who gain "reputation points" through likes and comments on their posts are automatically ranked as administrators. If several admins report the same post, it is hidden – similar to what happens on Wikipedia, where a board of admins is elected by all users to make decisions.
 
 # Download Bastyon on Your Device of Choice
 
-- **iOS** - [Download from the App Store](https://apps.apple.com/es/app/bastyon/id1537944200)
-- **Android** - [Get it on Google Play](https://play.google.com/store/apps/details?id=pocketnet.app)
-- **Android (without Google services)** - [Download it from Github release](https://github.com/pocketnetteam/pocketnet.gui/releases)
-- **Desktop** - [Download it from Github release](https://github.com/pocketnetteam/pocketnet.gui/releases) (`.exe` for Windows, `.dmg` for macOS, `.deb` for Ubuntu/Debian Linux, or `.AppImage` for a portable version on Linux)
+You can download our mobile applications from the app stores below:
+
+[<img src="https://raw.githubusercontent.com/Volorf/Badges/master/App%20Store/App%20Store%20Badge.svg" height="40"/>](https://apps.apple.com/es/app/bastyon/id1537944200) [<img src="https://github.com/Volorf/Badges/blob/master/Google%20Play/Google%20Play%20Badge.svg" height="40"/>](https://play.google.com/store/apps/details?id=pocketnet.app)
+
+Desktop and other app types can be downloaded via the links below:
+
+- **Desktop app for Windows** - [Download](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/BastyonSetup.exe)
+- **Desktop app for macOS** - [Download](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/BastyonSetup.dmg)
+- **Android (without Google services)** - [Download](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/BastyonGF.apk)
+- **Desktop app for Linux**
+  - [**Download in DEB format**](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/BastyonSetup.deb)
+  - [**Download in RPM format**](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/BastyonSetup.rpm)
+  - [**Download in AppImage format**](https://github.com/pocketnetteam/pocketnet.gui/releases/download/latest/Bastyon.AppImage)
 
 # Contact Us
 
