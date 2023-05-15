@@ -291,13 +291,14 @@ var uploadpeertube = (function () {
 
 				const transcodeOption = self.app.platform.sdk.usersettings.meta.videoTranscoding;
 
-				let transcodingAllowed = (transcodeOption && transcodeOption.value);
+				let transcodingAllowed = transcodeOption?.value;
 
 				// For audio files, disable the transcoding
-				if (isAudio)
+				if (isAudio) {
 					transcodingAllowed = false;
+				}
 
-				let transcoded = null;
+				let transcoded = {};
 
 
 				/*el.videoError.text(hfname);
@@ -329,7 +330,7 @@ var uploadpeertube = (function () {
 
 						loadProgress(progress, 'uploadVideoProgress_binaries');
 					};
-					const progressTranscode = (task, progress) => {
+					const progressTranscode = (task, progress, total) => {
 						if (!videoTranscoding) {
 							loadProgress(0, 'uploadVideoProgress_processing');
 
@@ -338,7 +339,7 @@ var uploadpeertube = (function () {
 							return
 						}
 
-						loadProgress(progress, 'uploadVideoProgress_processing');
+						loadProgress(total / 3, 'uploadVideoProgress_processing');
 					};
 
 					transcoder.setPreCheckFunction((probe) => {
@@ -346,8 +347,8 @@ var uploadpeertube = (function () {
 						const MaxAudioBitrate = 256;
 						const MaxVideoFramerate = 25;
 
-						const isWidthBigger = (probe.width > 1280);
-						const isHeightBigger = (probe.height > 720);
+						const isWidthBigger = (probe.width > 640);
+						const isHeightBigger = (probe.height > 480);
 						const isVideoBitrateBigger = (probe.videoBitrate > MaxVideoBitrate);
 						const isAudioBitrateBigger = (probe.audioBitrate > MaxAudioBitrate);
 						const isFrameRateBigger = (probe.frameRate > MaxVideoFramerate);
@@ -380,7 +381,8 @@ var uploadpeertube = (function () {
 							});
 						});
 
-						transcoded = await transcoder.runTask(file);
+						transcoded[480] = await transcoder.runTask(480, file);
+						transcoded[240] = await transcoder.runTask(240, file);
 
 					} catch (err) {
 						switch (err) {

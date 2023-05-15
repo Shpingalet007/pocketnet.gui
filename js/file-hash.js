@@ -47,10 +47,10 @@ const binaryB58 = (() => {
   return binary_to_base58;
 })();
 
-async function getUniqueFileId(videoFile) {
+async function getUniqueFileId(videoFile, resolution) {
   let { lastModified, name, size, type } = videoFile;
 
-  let data = { lastModified, name, size, type };
+  let data = { lastModified, name, size, type, resolution };
 
   let uniqueData = JSON.stringify(data);
 

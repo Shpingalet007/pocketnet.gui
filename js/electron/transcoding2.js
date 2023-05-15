@@ -18,9 +18,10 @@ class ClientTask {
 
   needProcess = () => false;
 
-  constructor(ipcRender, file) {
+  constructor(ipcRender, file, resolution) {
     this.ipcRender = ipcRender;
     this.file = file;
+    this.resolution = resolution;
   }
 
   setFileCheck(predicateFunc) {
@@ -30,7 +31,7 @@ class ClientTask {
   async init() {
     this.state = 'INITIATED';
 
-    this.id = await getUniqueFileId(this.file);
+    this.id = await getUniqueFileId(this.file, this.resolution);
 
     this.ipcRender.send('Transcoder:InitTask', this.id);
   }
@@ -86,7 +87,7 @@ class ClientTask {
     return promise;
   }
 
-  async transcode(progressListener) {
+  async transcode(resolution, progressListener) {
     this.state = 'TRANSCODING';
 
     const promise = new Promise((resolve, reject) => {
@@ -107,12 +108,13 @@ class ClientTask {
         resolve();
       });
 
-      this.ipcRender.on('Transcoder:Transcode:Progress', (e, progress) => (
-        progressListener(this, progress)
-      ));
+      this.ipcRender.on('Transcoder:Transcode:Progress', (e, progress) => {
+        this.progress = progress;
+        progressListener(this, progress);
+      });
     });
 
-    this.ipcRender.send('Transcoder:Transcode', this.file.path);
+    this.ipcRender.send('Transcoder:Transcode', this.file.path, resolution);
 
     return promise;
   }
@@ -257,8 +259,8 @@ class BridgeTask {
   }
 
   listenTranscodeEvents() {
-    this.ipcMain.once('Transcoder:Transcode', async (e, filePath) => {
-      this.transcodeVideo(filePath);
+    this.ipcMain.once('Transcoder:Transcode', async (e, filePath, resolution) => {
+      this.transcodeVideo(filePath, resolution);
     });
   }
 
@@ -389,7 +391,7 @@ class BridgeTask {
     }
   }
 
-  transcodeVideo(filePath) {
+  transcodeVideo(filePath, resolution) {
     const spawnFfmpeg = () => {
       const threadsCount = coresCount / 2;
 
@@ -400,7 +402,7 @@ class BridgeTask {
       return ffmpeg(filePath)
         .withVideoCodec('libx264')
         .withAudioCodec('libmp3lame')
-        .videoFilters(`scale=-2:min'(720,ih)'`)
+        .videoFilters(`scale=-2:min'(${resolution},ih)'`)
         .outputOption('-qmin 25')
         .outputOption('-qmax 35')
         .outputOption('-preset veryfast')
@@ -564,6 +566,8 @@ class Client {
   transcodeProgressListener = () => {};
   transcodeStartedListener = () => {};
 
+  tasks = [];
+
   constructor(ipcRender) {
     this.ipcRender = ipcRender;
   }
@@ -584,8 +588,9 @@ class Client {
     this.transcodeStartedListener = listener;
   }
 
-  async runTask(file) {
-    const task = new ClientTask(this.ipcRender, file);
+  async runTask(resolution, file) {
+    const task = new ClientTask(this.ipcRender, file, resolution);
+    this.tasks.push(task);
 
     task.setFileCheck(this.preCheckPredicate);
 
@@ -606,7 +611,13 @@ class Client {
     this.transcodeStartedListener(task);
 
     // 3. Start process
-    await task.transcode(this.transcodeProgressListener);
+    await task.transcode(resolution, (task, progress) => {
+      const totalProgress = this.tasks.reduce((accum, curr) => ({
+        progress: accum.progress + curr.progress
+      })).progress;
+
+      this.transcodeProgressListener(task, progress, totalProgress);
+    });
 
     // 4. Return TASK to client
     return task;
