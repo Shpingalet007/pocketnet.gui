@@ -130,6 +130,11 @@
 										<% 
 
 											var src = user.i  || user.image;
+
+											if (!checkIfAllowedImage(src)) {
+												src = null;
+											}
+
 											var name = user.name;
 											var letter = name ? name[0] : '';
 											var address = user.address;
