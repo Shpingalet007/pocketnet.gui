@@ -2,6 +2,19 @@ name: Deploy Proxy
 
 on:
   workflow_dispatch:
+    inputs:
+      proxy1:
+        type: boolean
+        description: Deploy to proxy 1
+      proxy2:
+        type: boolean
+        description: Deploy to proxy 2
+      proxy3:
+        type: boolean
+        description: Deploy to proxy 3
+      proxy6:
+        type: boolean
+        description: Deploy to proxy 6
 
 jobs:
   build:
