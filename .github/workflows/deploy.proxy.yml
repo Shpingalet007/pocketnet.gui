@@ -65,6 +65,7 @@ jobs:
     strategy:
       matrix:
         runner: [ proxy.1, proxy.2, proxy.3, proxy.6 ]
+        skip: ${{ github.event.inputs }}
     steps:
       - name: Pull && Up proxy container
         run: /data/proxy_pull_up.sh
