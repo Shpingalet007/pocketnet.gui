@@ -14,6 +14,22 @@ jobs:
         with:
           ref: master
           fetch-depth: 0 # We need a complete history for merging branches
+      - name: Archive merged repo
+        run: |
+          mkdir -p /tmp/repo
+          rsync -ah --exclude={'.git','.gitignore','.github','node_modules','.well-known'} ./ /tmp/repo/
+          cd /tmp/repo
+          tar czf /tmp/repo.tgz ./
+      - name: Upload artifact repo.tgz
+        uses: actions/upload-artifact@v3
+        with:
+          name: repo.tgz
+          path: /tmp/repo.tgz
+      - name: Save artifact head.txt
+        uses: actions/upload-artifact@v3
+        with:
+          name: head
+          path: ./head.txt
 
   # Deploy test & pre sites
   deploy-pre:
