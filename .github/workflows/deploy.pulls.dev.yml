@@ -54,8 +54,35 @@ jobs:
           rm -rf repo.tgz
           npm i
           npm run minimize:bastyon -- -sha=${{ github.sha }} -run=${{ github.run_number }}${{ github.run_attempt }}
+      - name: Create deployment
+        uses: chrnorm/deployment-action@v2
+        id: deployment
+        with:
+          ref: '${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}'
+          token: '${{ github.token }}'
+          environment-url: 'https://pre.pocketnet.app/'
+          environment: 'dev'
       - name: Copy to dest dir
         run: rsync -ah --exclude={'.git','.gitignore','.github','package.json','package-lock.json','minimize.json','node_modules','.well-known','assets','proxy16','cordova','res','build'} ./ /docker/pre/
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v2
+        with:
+          ref: '${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}'
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'success'
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          ref: '${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}'
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'failure'
 
   deploy-test:
     needs: merge
