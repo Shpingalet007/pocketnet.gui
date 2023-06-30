@@ -31,7 +31,7 @@
         "htmlparser2": "^6.1.0",
         "iconv-lite": "",
         "is-localhost-ip": "^2.0.0",
-        "jsdom": "^7.2.2",
+        "jsdom": "^16.5.0",
         "lambda-rate-limiter": "",
         "lodash": "^4.17.15",
         "md5": "^2.3.0",
