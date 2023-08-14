@@ -14,10 +14,6 @@ jobs:
         with:
           ref: master
           fetch-depth: 0 # We need a complete history for merging branches
-      - uses: andyoknen/combine-pull-requests@v1
-        with:
-          label: deploy.dev
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Archive merged repo
         run: |
           mkdir -p /tmp/repo
