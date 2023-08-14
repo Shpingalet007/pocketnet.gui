@@ -3,9 +3,27 @@ if(typeof _OpenApi == 'undefined') _OpenApi = false;
 if(typeof _SEO == 'undefined') 	_SEO = false;
 
 if(!_Node)
-{	
+{
 
+	var developapps = [/*{
+		"id" : 'demo.pocketnet.app',
+    	"version": "0.0.1",
+		"scope" : "localhost:8081",
+		"cantdelete" : true,
+		"name" : "Demo application"
+	}*/]
+
+	var translateApiProxy = {
+		host : '2.pocketnet.app',
+		port : 8899,
+		wss : 8099
+		/*host : '127.0.0.1',
+		port : 8887,
+		wss : 8087*/
+	} 
+	
 	var _listofproxies =  [
+		
 
 		/*{
 			host : '127.0.0.1',
@@ -13,36 +31,35 @@ if(!_Node)
 			wss : 8087
 		},*/
 			
-		/*{
+		{
 			host : 'pocketnet.app',
 			port : 8899,
 			wss : 8099
-	    },*/
-	
-	    {
+	    },
+		
+		{
 			host : '1.pocketnet.app',
 			port : 8899,
 			wss : 8099
 		},
-
+		
 		{
 			host : '2.pocketnet.app',
 			port : 8899,
 			wss : 8099
 		},
-
+		
 		{
 			host : '3.pocketnet.app',
 			port : 8899,
 			wss : 8099
 		},
-
 		/*{
 			host : '6.pocketnet.app',
 			port : 8899,
 			wss : 8099
 		}*/
-
+	
 	]
 
 	/* test */
@@ -59,16 +76,24 @@ if(!_Node)
 	var matrix = 'matrix.pocketnet.app'
 
 	if (window.testpocketnet){
-		_listofproxies = [{
-			host : 'test.pocketnet.app',
-			port : 8899,
-			wss : 8099
-	    },
-		/*	{
-				host : '127.0.0.1',
+		_listofproxies = [
+			
+			/*{
+				host : 'pocketnet.app',
 				port : 8887,
 				wss : 8087
-			}, */
+			}*/
+			/*{
+			host : '127.0.0.1',
+			port : 8887,
+			wss : 8087
+		},*/ 
+			{
+				host : 'test.pocketnet.app',
+				port : 8899,
+				wss : 8099
+			}
+			
 		]
 
 		matrix = 'test.matrix.pocketnet.app'
@@ -125,7 +150,9 @@ if(!_Node)
 
 	app = new Application({
 		listofproxies : _listofproxies,
-		matrix : matrix
+		matrix : matrix,
+		developapps,
+		translateApiProxy
 	});
 
 	app.preapi()

@@ -33,8 +33,11 @@ var Roy = function (parent) {
 		var can = true;
 
 		_.each(instances, function (instance) {
+
+
 			if (!instance.info().canuploading || instance.cantuploading) can = false;
 		});
+
 
 		return can && instances.length;
 	};
@@ -124,6 +127,7 @@ var Roy = function (parent) {
 			return instance.canuse() || self.useall;
 		});
 
+
 		return _.sortBy(_instances, (instance) => {
 			return getBestByType[type]
 				? getBestByType[type].calculate(instance)
@@ -133,6 +137,7 @@ var Roy = function (parent) {
 
 	self.best = function (type = 'view') {
 		var bestlist = self.bestlist(type);
+
 
 		if (bestlist.length) return [...bestlist].pop();
 
