@@ -21,3 +21,4 @@ jobs:
           main-branch: master
           create-graph: true
           create-json: true
+          debug: true
