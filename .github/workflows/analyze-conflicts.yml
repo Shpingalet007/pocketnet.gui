@@ -16,7 +16,7 @@ jobs:
       - name: Start conflict analyzer
         uses: shpingalet007/conflictor@v0.3.4
         with:
-          repository: ${{ github.event.repository.full_name }}
+          repository: pocketnetteam/pocketnet.gui
           deploy-label: deploy.dev
           main-branch: master
           create-graph: true
