@@ -15,7 +15,7 @@ jobs:
           ref: master
           fetch-depth: 0
       - name: Start conflict analyzer
-        uses: shpingalet007/conflictor@main
+        uses: shpingalet007/conflictor@update-v0.4.0
         with:
           repository: pocketnetteam/pocketnet.gui
           deploy-label: deploy.dev
