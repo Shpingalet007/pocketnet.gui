@@ -22950,6 +22950,18 @@ Platform = function (app, listofnodes) {
                 });*/
 
             }
+
+            document.addEventListener('copy', (e) => {
+                const isArticleContext = !!document.querySelector('#windowsContainer .sharearticle');
+            
+                if (isArticleContext) {
+                    return;
+                }
+                
+                const selection = window.getSelection().toString();
+            
+                navigator.clipboard.writeText(selection);
+            })
         },
 
         notify : {
