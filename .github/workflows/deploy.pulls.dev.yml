@@ -8,12 +8,17 @@ on:
         description: 'Select network'
         default: 'Testnet'
         options:
+          - 'Both'
           - 'Testnet'
           - 'Mainnet'
       build_all:
         type: boolean
         description: 'Build all'
         default: true
+      deploy_web:
+        type: boolean
+        description: 'Deploy web'
+        default: false
       build_android:
         type: boolean
         description: 'Build Android'
