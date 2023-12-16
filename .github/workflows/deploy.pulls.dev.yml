@@ -17,19 +17,19 @@ on:
       build_android:
         type: boolean
         description: 'Build Android'
-        default: true
+        default: false
       build_windows:
         type: boolean
         description: 'Build Windows'
-        default: true
+        default: false
       build_macos:
         type: boolean
         description: 'Build macOS'
-        default: true
+        default: false
       build_linux:
         type: boolean
         description: 'Build Linux'
-        default: true
+        default: false
 
 jobs:
   # Merge all 'deploy.dev' PRs to master branch
