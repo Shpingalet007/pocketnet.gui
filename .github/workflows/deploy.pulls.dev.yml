@@ -6,30 +6,29 @@ on:
       network:
         type: choice
         description: 'Select network'
-        required: true
         default: 'Testnet'
         options:
           - 'Testnet'
           - 'Mainnet'
       build_all:
+        type: boolean
         description: 'Build all'
-        required: false
         default: true
       build_android:
+        type: boolean
         description: 'Build Android'
-        required: false
         default: true
       build_windows:
+        type: boolean
         description: 'Build Windows'
-        required: false
         default: true
       build_macos:
+        type: boolean
         description: 'Build macOS'
-        required: false
         default: true
       build_linux:
+        type: boolean
         description: 'Build Linux'
-        required: false
         default: true
 
 jobs:
