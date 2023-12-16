@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       network:
+        type: choice
         description: 'Select network'
         required: true
         default: 'Testnet'
