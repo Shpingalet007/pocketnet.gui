@@ -344,7 +344,7 @@ class OG {
                     }
 
                     if(isset($r->s) && isset($r->s->v) && $r->s->v == 'a'){
-                        $this->currentOg['description'] = '';
+                        $this->currentOg['description'] = $this->defaultOg['description'];
                     }
                     else{
                         $this->currentOg['description'] = substr(strip_tags(urldecode($r->m)), 0, 130).'...';
