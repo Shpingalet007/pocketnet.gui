@@ -100,7 +100,7 @@
         "masonry-layout": "^4.2.2",
         "md5": "^2.3.0",
         "medium-editor": "^5.23.3",
-        "mjml": "^4.6.3",
+        "mjml": "^4.15.0",
         "ncp": "^2.0.0",
         "nedb": "^1.8.0",
         "node-autodetect-utf8-cp1251-cp866": "",
