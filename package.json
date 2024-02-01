@@ -110,7 +110,7 @@
         "node-notifier": "^10.0.1",
         "node-rsa": "^1.1.1",
         "nodejs-base64": "^1.0.3",
-        "nodemailer": "^6.4.11",
+        "nodemailer": "^6.9.9",
         "npm": "^8.7.0",
         "object-hash": "^2.0.3",
         "og-parser": "^1.0.5",
