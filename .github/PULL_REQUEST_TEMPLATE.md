@@ -1,5 +1,5 @@
-<!-- 📣  SELECT PR TEMPLATE IN PREVIEW TAB  📣 -->
-<!-- 📣 WE WOULD CLOSE IT IF YOU DON'T READ 📣 -->
+<!-- 📣    SELECT PR TEMPLATE IN PREVIEW TAB    📣 -->
+<!-- 📣 WE WOULD CLOSE THE PR IF YOU DON'T READ 📣 -->
 
 ### Select the appropriate PR template
 * [Feature](?expand=1&template=FEATURE.md&title=feat%3A%20fill%20here%20the%20pr%20title)
