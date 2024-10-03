@@ -96,7 +96,7 @@
         "lambda-rate-limiter": "",
         "lodash": "^4.17.15",
         "m3u8-parser": "^5.0.0",
-        "make-fetch-happen": "^10.1.2",
+        "make-fetch-happen": "^14.0.1",
         "masonry-layout": "^4.2.2",
         "md5": "^2.3.0",
         "medium-editor": "^5.23.3",
